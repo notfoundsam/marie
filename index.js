@@ -1,96 +1,60 @@
-import React      from 'react'
-import { render } from 'react-dom'
+var React = require("react");
+var ReactDOM = require("react-dom");
+var ReactRouter = require("react-router");
+var Router = ReactRouter.Router;
+var Link = ReactRouter.Link;
+var Route = ReactRouter.Route;
+var IndexRoute = ReactRouter.IndexRoute;
 
-const Top = React.createClass ({
-  render() {
+var Top = React.createClass ({
+  render: function() {
     return(
       <h3>Top</h3>
     );
   }
 })
 
-const Offers = React.createClass ({
-  render() {
+var Offers = React.createClass ({
+  render: function() {
     return(
       <h3>Offers</h3>
     );
   }
 })
 
-const Index = React.createClass ({
-  render() {
+var Demands = React.createClass ({
+  render: function() {
     return(
-      <p>indexpage</p>
+      <h3>demands</h3>
     );
   }
 })
 
-const New = React.createClass ({
-  render() {
-    return(
-      <p>newpage</p>
-    )
-  }
-})
-
-const Show = React.createClass ({
-  render() {
-    return(
-      <p>showpage</p>
-    )
-  }
-})
-
-const Demands = React.createClass ({
-  render() {
-    let DemandsChild
-    switch (this.state.route) {
-      case '/demands/new':          DemandsChild = New; break;
-      case '/demands/show/[1-9]\d': DemandsChild = Show; break;
-      default:                      DemandsChild = Index;
-    }
-    return(
-    );
-  }
-})
-
-const App = React.createClass({
-  getInitialState() {
-    return {
-      route: window.location.hash.substr(1)
-    }
-  },
-
-  componentDidMount() {
-    window.addEventListener('hashchange', () => {
-      this.setState({
-        route: window.location.hash.substr(1)
-      })
-    })
-  },
-
-  render() {
-    let Child
-    switch (this.state.route) {
-      case '/demands': Child = Demands; break;
-      case '/offers':  Child = Offers; break;
-      default:         Child = Top;
-    }
+var App = React.createClass({
+  render: function() {
     return(
       <div>
         <h1>App</h1>
         <ul>
-          <li><a href="/">Top</a></li>
-          <li><a href="#/demands">Demands</a></li>
-          <li><a href="#/offers">Offers</a></li>
+          <li><Link to="/">Top</Link></li>
+          <li><Link to="/demands">Demands</Link></li>
+          <li><Link to="/offers">Offers</Link></li>
         </ul>
-        <Child/>
+        {this.props.children}
       </div>
     );
   }
 })
 
-React.render(
-  <App />,
-  document.getElementById('container')
+// Router や Route も React コンポーネント
+ReactDOM.render((
+  <Router>
+    <Route path="/" component={App}>
+      <IndexRoute component={Top}/>
+      <Route path="demands" component={Demands}/>
+      <Route path="offers" component={Offers}/>
+    </Route>
+  </Router>
+  ),
+  document.getElementById("container")
 );
