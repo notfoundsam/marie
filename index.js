@@ -11,6 +11,11 @@ var data = [
   {id: "2", budget: "200"}
 ];
 
+var offer_data = [
+  {id: "1", detail: "hoge"},
+  {id: "2", detail: "foo"}
+];
+
 var Top = React.createClass ({
   render: function() {
     return(
@@ -24,7 +29,55 @@ var Top = React.createClass ({
 var Offers = React.createClass ({
   render: function() {
     return(
-      <h3>Offers</h3>
+      <OfferList data={offer_data}/>
+    );
+  }
+})
+
+var OfferList = React.createClass ({
+  getInitialState: function() {
+    return {data: []};
+  },
+  render: function() {
+    var offerNodes = this.props.data.map(function (offer) {
+      return(
+        <table>
+          <tr>
+            <th>
+              ID
+            </th>
+            <th>
+             Detail
+            </th>
+            <th>
+            </th>
+          </tr>
+          <Offer id={offer.id} detail={offer.detail} />
+        </table>
+      );
+    });
+    return(
+      <div ClassName="offerList">
+        {offerNodes}
+      </div>
+    );
+  }
+})
+
+var Offer = React.createClass ({
+  render: function() {
+    return(
+      <tr>
+        <td>
+          {this.props.id}
+        </td>
+        <td>
+          {this.props.detail}
+        </td>
+        <td>
+          <Link to={"offers/show/" + this.props.id}>show</Link>
+        </td>
+      </tr>
     );
   }
 })
@@ -32,7 +85,24 @@ var Offers = React.createClass ({
 var OfferDetail = React.createClass ({
   render: function() {
     return(
-      <h3>OfferDetail</h3>
+      <table>
+        <tr>
+         <th>
+           ID
+         </th>
+         <td>
+           {this.props.id}
+         </td>
+        </tr>
+        <tr>
+         <th>
+           Detail
+         </th>
+         <td>
+           {this.props.detail}
+         </td>
+        </tr>
+      </table>
     );
   }
 })
@@ -44,6 +114,7 @@ var OfferNew = React.createClass ({
     );
   }
 })
+
 var Demands = React.createClass ({
   render: function() {
     return (

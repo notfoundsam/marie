@@ -11,6 +11,8 @@ var IndexRoute = ReactRouter.IndexRoute;
 
 var data = [{ id: "1", budget: "100" }, { id: "2", budget: "200" }];
 
+var offer_data = [{ id: "1", detail: "hoge" }, { id: "2", detail: "foo" }];
+
 var Top = React.createClass({
   displayName: "Top",
 
@@ -31,10 +33,73 @@ var Offers = React.createClass({
   displayName: "Offers",
 
   render: function render() {
+    return React.createElement(OfferList, { data: offer_data });
+  }
+});
+
+var OfferList = React.createClass({
+  displayName: "OfferList",
+
+  getInitialState: function getInitialState() {
+    return { data: [] };
+  },
+  render: function render() {
+    var offerNodes = this.props.data.map(function (offer) {
+      return React.createElement(
+        "table",
+        null,
+        React.createElement(
+          "tr",
+          null,
+          React.createElement(
+            "th",
+            null,
+            "ID"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Detail"
+          ),
+          React.createElement("th", null)
+        ),
+        React.createElement(Offer, { id: offer.id, detail: offer.detail })
+      );
+    });
     return React.createElement(
-      "h3",
+      "div",
+      { ClassName: "offerList" },
+      offerNodes
+    );
+  }
+});
+
+var Offer = React.createClass({
+  displayName: "Offer",
+
+  render: function render() {
+    return React.createElement(
+      "tr",
       null,
-      "Offers"
+      React.createElement(
+        "td",
+        null,
+        this.props.id
+      ),
+      React.createElement(
+        "td",
+        null,
+        this.props.detail
+      ),
+      React.createElement(
+        "td",
+        null,
+        React.createElement(
+          Link,
+          { to: "offers/show/" + this.props.id },
+          "show"
+        )
+      )
     );
   }
 });
@@ -44,9 +109,36 @@ var OfferDetail = React.createClass({
 
   render: function render() {
     return React.createElement(
-      "h3",
+      "table",
       null,
-      "OfferDetail"
+      React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "th",
+          null,
+          "ID"
+        ),
+        React.createElement(
+          "td",
+          null,
+          this.props.id
+        )
+      ),
+      React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "th",
+          null,
+          "Detail"
+        ),
+        React.createElement(
+          "td",
+          null,
+          this.props.detail
+        )
+      )
     );
   }
 });
@@ -62,6 +154,7 @@ var OfferNew = React.createClass({
     );
   }
 });
+
 var Demands = React.createClass({
   displayName: "Demands",
 
