@@ -1,8 +1,58 @@
 import React      from 'react'
 import { render } from 'react-dom'
-import Top        form './Top'
-import Demands    form './Demands'
-import Offers     form './Offers'
+
+const Top = React.createClass ({
+  render() {
+    return(
+      <h3>Top</h3>
+    );
+  }
+})
+
+const Offers = React.createClass ({
+  render() {
+    return(
+      <h3>Offers</h3>
+    );
+  }
+})
+
+const Index = React.createClass ({
+  render() {
+    return(
+      <p>indexpage</p>
+    );
+  }
+})
+
+const New = React.createClass ({
+  render() {
+    return(
+      <p>newpage</p>
+    )
+  }
+})
+
+const Show = React.createClass ({
+  render() {
+    return(
+      <p>showpage</p>
+    )
+  }
+})
+
+const Demands = React.createClass ({
+  render() {
+    let DemandsChild
+    switch (this.state.route) {
+      case '/demands/new':          DemandsChild = New; break;
+      case '/demands/show/[1-9]\d': DemandsChild = Show; break;
+      default:                      DemandsChild = Index;
+    }
+    return(
+    );
+  }
+})
 
 const App = React.createClass({
   getInitialState() {

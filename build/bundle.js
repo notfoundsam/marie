@@ -21,18 +21,6 @@ var Top = _react2['default'].createClass({
   }
 });
 
-var Demands = _react2['default'].createClass({
-  displayName: 'Demands',
-
-  render: function render() {
-    return _react2['default'].createElement(
-      'h3',
-      null,
-      'Demands'
-    );
-  }
-});
-
 var Offers = _react2['default'].createClass({
   displayName: 'Offers',
 
@@ -41,6 +29,18 @@ var Offers = _react2['default'].createClass({
       'h3',
       null,
       'Offers'
+    );
+  }
+});
+
+var Demands = _react2['default'].createClass({
+  displayName: 'Demands',
+
+  render: function render() {
+    return _react2['default'].createElement(
+      'h3',
+      null,
+      'demands'
     );
   }
 });
