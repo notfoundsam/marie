@@ -9,14 +9,20 @@ var Link = ReactRouter.Link;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 
+var data = [{ id: "1", budget: "100" }, { id: "2", budget: "200" }];
+
 var Top = React.createClass({
   displayName: "Top",
 
   render: function render() {
     return React.createElement(
-      "h3",
+      "div",
       null,
-      "Top"
+      React.createElement(
+        "h3",
+        null,
+        "Top"
+      )
     );
   }
 });
@@ -33,14 +39,152 @@ var Offers = React.createClass({
   }
 });
 
-var Demands = React.createClass({
-  displayName: "Demands",
+var OfferDetail = React.createClass({
+  displayName: "OfferDetail",
 
   render: function render() {
     return React.createElement(
       "h3",
       null,
-      "demands"
+      "OfferDetail"
+    );
+  }
+});
+
+var OfferNew = React.createClass({
+  displayName: "OfferNew",
+
+  render: function render() {
+    return React.createElement(
+      "h3",
+      null,
+      "OfferNew"
+    );
+  }
+});
+var Demands = React.createClass({
+  displayName: "Demands",
+
+  render: function render() {
+    return React.createElement(DemandList, { data: data });
+  }
+});
+
+var DemandList = React.createClass({
+  displayName: "DemandList",
+
+  getInitialState: function getInitialState() {
+    return { data: [] };
+  },
+  render: function render() {
+    var demandNodes = this.props.data.map(function (demand) {
+      return React.createElement(
+        "table",
+        null,
+        React.createElement(
+          "tr",
+          null,
+          React.createElement(
+            "th",
+            null,
+            "ID"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "budget"
+          ),
+          React.createElement("th", null)
+        ),
+        React.createElement(Demand, { id: demand.id, budget: demand.budget })
+      );
+    });
+    return React.createElement(
+      "div",
+      { ClassName: "demandList" },
+      demandNodes
+    );
+  }
+});
+
+var Demand = React.createClass({
+  displayName: "Demand",
+
+  render: function render() {
+    return React.createElement(
+      "tr",
+      null,
+      React.createElement(
+        "td",
+        null,
+        this.props.id
+      ),
+      React.createElement(
+        "td",
+        null,
+        this.props.budget
+      ),
+      React.createElement(
+        "td",
+        null,
+        React.createElement(
+          Link,
+          { to: "demands/show/" + this.props.id },
+          "show"
+        )
+      )
+    );
+  }
+});
+
+var DemandNew = React.createClass({
+  displayName: "DemandNew",
+
+  render: function render() {
+    return React.createElement(
+      "form",
+      { className: "demandForm" },
+      React.createElement("input", { id: "budget", type: "text", placeholder: "Please Write Your Budget" }),
+      React.createElement("input", { type: "submit" })
+    );
+  }
+});
+
+var DemandDetail = React.createClass({
+  displayName: "DemandDetail",
+
+  render: function render() {
+    return React.createElement(
+      "table",
+      null,
+      React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "th",
+          null,
+          "ID"
+        ),
+        React.createElement(
+          "td",
+          null,
+          this.props.id
+        )
+      ),
+      React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "th",
+          null,
+          "Budget"
+        ),
+        React.createElement(
+          "td",
+          null,
+          this.props.budget
+        )
+      )
     );
   }
 });
@@ -83,8 +227,26 @@ var App = React.createClass({
           null,
           React.createElement(
             Link,
+            { to: "/demands/new" },
+            "Demand New"
+          )
+        ),
+        React.createElement(
+          "li",
+          null,
+          React.createElement(
+            Link,
             { to: "/offers" },
             "Offers"
+          )
+        ),
+        React.createElement(
+          "li",
+          null,
+          React.createElement(
+            Link,
+            { to: "/offers/new" },
+            "Offer New"
           )
         )
       ),
@@ -102,7 +264,11 @@ ReactDOM.render(React.createElement(
     { path: "/", component: App },
     React.createElement(IndexRoute, { component: Top }),
     React.createElement(Route, { path: "demands", component: Demands }),
-    React.createElement(Route, { path: "offers", component: Offers })
+    React.createElement(Route, { path: "demands/new", component: DemandNew }),
+    React.createElement(Route, { path: "demands/show/:id", component: DemandDetail }),
+    React.createElement(Route, { path: "offers", component: Offers }),
+    React.createElement(Route, { path: "offers/new", component: OfferNew }),
+    React.createElement(Route, { path: "offers/show/:id", component: OfferDetail })
   )
 ), document.getElementById("container"));
 
