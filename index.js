@@ -19,8 +19,88 @@ var offer_data = [
 var Top = React.createClass ({
   render: function() {
     return(
-      <div>
-        <h3>Top</h3>
+      <div className="container">
+        <div className="">
+          <h1 className="catch-phrase">
+            みんなでつくるから、もっとうれしい
+          </h1>
+          <h2 className="sub-catch-phrase">
+            ー わたしたちらしいウェディングを ー
+          </h2>
+          <div class="on-muvie-links">
+            <button>
+              希望のサービス / アイテム
+            </button>
+            <button>
+              予算
+            </button>
+            <button>
+              Search
+            </button>
+          </div>
+        </div>
+        <table>
+          <tr>
+            <td>
+              <div className="left-column">
+                <h3 className="subTitle">marieeとは</h3>
+                <div className="description">
+                  <p>これから結婚式を挙げるカップルとアトリエショップやカメラマンなどのさまざまな専門店とをつなげるマッチングサービスです。</p>
+                 <p>《サービスの流れ》</p>
+                 <p>１．カップルが専門店への依頼を登録</p>
+                 <p>２．専門店が登録のあった依頼案件に対して提案</p>
+                 <p>３．マッチングしたら双方間で直接打ち合わせ</p>
+                </div>
+                <div className="right-column">
+                  <img src="images/mariee.jpg" alt="mariee" />
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div className="left-column">
+                <h3 className="subTitle">ベンダーに仕事を依頼する</h3>
+                <div className="description">
+                  <p>希望するアイテム、希望条件、理想のイメージを登録して、専門店から提案が来るのを待ちましょう！</p>
+                  <p>専門家の力を集結させて、「わたしたちらしいウェディングを」実現させましょう！</p>
+                  <br/>
+                  <p>個人の仕事を受注する</p>
+                  <p>専門店登録をして理想のウェディングを挙げたい2人を応援しませんか？私たちの理念に共感していただける専門店を絶賛募集しています。</p>
+                </div>
+                <Link to="/demands">
+                  <button className="top-link">
+                    依頼する / 理想のイメージを伝える
+                  </button>
+                </Link>
+              </div>
+              <div className="right-column">
+                <img src="images/demand.jpg" alt="demand" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div className="left-column">
+                <h3 className="subTitle">個人の仕事を受注する</h3>
+                <div className="description">
+                  <p>専門店登録をして理想のウェディングを挙げたい2人を応援しませんか？私たちの理念に共感していただける専門店を絶賛募集しています。</p>
+                </div>
+                <Link to="/offers">
+                  <button className="top-link">
+                    案件を送る / カップルを応援する
+                  </button>
+                </Link>
+              </div>
+              <div className="right-column">
+                <img src="images/offer.jpg" alt="offer" />
+              </div>
+            </td>
+          </tr>
+        </table>
+        <Link to="/">トップに戻る</Link>
+        <footer>
+        </footer>
       </div>
     );
   }
@@ -211,14 +291,30 @@ var App = React.createClass({
   render: function() {
     return(
       <div>
-        <h1>App</h1>
-        <ul>
-          <li><Link to="/">Top</Link></li>
-          <li><Link to="/demands">Demands</Link></li>
-          <li><Link to="/demands/new">Demand New</Link></li>
-          <li><Link to="/offers">Offers</Link></li>
-          <li><Link to="/offers/new">Offer New</Link></li>
-        </ul>
+        <div>
+          <div className="header">
+            <div className="logo">
+              <Link to="/">
+                mariee
+              </Link>
+            </div>
+            <div className="navigation">
+              marieeとは
+            </div>
+            <div className="navigation">
+              <Link to="demands">
+                専門店に依頼する
+              </Link>
+            </div>
+            <div className="navigation">
+              <Link to="offers">
+                依頼案件を探す
+              </Link>
+            </div>
+            <div className="button"><a className="btn" href="">Hazime</a></div>
+            <div className="button"><a className="btn" href="">Login</a></div>
+          </div>
+        </div>
         {this.props.children}
       </div>
     );
