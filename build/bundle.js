@@ -21,6 +21,39 @@ var Top = React.createClass({
       "div",
       { className: "container" },
       React.createElement(
+        "div",
+        { className: "" },
+        React.createElement(
+          "h1",
+          { className: "catch-phrase" },
+          "みんなでつくるから、もっとうれしい"
+        ),
+        React.createElement(
+          "h2",
+          { className: "sub-catch-phrase" },
+          "ー わたしたちらしいウェディングを ー"
+        ),
+        React.createElement(
+          "div",
+          { "class": "on-muvie-links" },
+          React.createElement(
+            "button",
+            null,
+            "希望のサービス / アイテム"
+          ),
+          React.createElement(
+            "button",
+            null,
+            "予算"
+          ),
+          React.createElement(
+            "button",
+            null,
+            "Search"
+          )
+        )
+      ),
+      React.createElement(
         "table",
         null,
         React.createElement(
@@ -66,7 +99,11 @@ var Top = React.createClass({
                   "３．マッチングしたら双方間で直接打ち合わせ"
                 )
               ),
-              React.createElement("div", { className: "right-column" })
+              React.createElement(
+                "div",
+                { className: "right-column" },
+                React.createElement("img", { src: "images/mariee.jpg", alt: "mariee" })
+              )
             )
           )
         ),
@@ -77,43 +114,52 @@ var Top = React.createClass({
             "td",
             null,
             React.createElement(
-              "h3",
-              { className: "subTitle" },
-              "ベンダーに仕事を依頼する"
+              "div",
+              { className: "left-column" },
+              React.createElement(
+                "h3",
+                { className: "subTitle" },
+                "ベンダーに仕事を依頼する"
+              ),
+              React.createElement(
+                "div",
+                { className: "description" },
+                React.createElement(
+                  "p",
+                  null,
+                  "希望するアイテム、希望条件、理想のイメージを登録して、専門店から提案が来るのを待ちましょう！"
+                ),
+                React.createElement(
+                  "p",
+                  null,
+                  "専門家の力を集結させて、「わたしたちらしいウェディングを」実現させましょう！"
+                ),
+                React.createElement("br", null),
+                React.createElement(
+                  "p",
+                  null,
+                  "個人の仕事を受注する"
+                ),
+                React.createElement(
+                  "p",
+                  null,
+                  "専門店登録をして理想のウェディングを挙げたい2人を応援しませんか？私たちの理念に共感していただける専門店を絶賛募集しています。"
+                )
+              ),
+              React.createElement(
+                Link,
+                { to: "/demands" },
+                React.createElement(
+                  "button",
+                  { className: "top-link" },
+                  "依頼する / 理想のイメージを伝える"
+                )
+              )
             ),
             React.createElement(
               "div",
-              { className: "description" },
-              React.createElement(
-                "p",
-                null,
-                "希望するアイテム、希望条件、理想のイメージを登録して、専門店から提案が来るのを待ちましょう！"
-              ),
-              React.createElement(
-                "p",
-                null,
-                "専門家の力を集結させて、「わたしたちらしいウェディングを」実現させましょう！"
-              ),
-              React.createElement("br", null),
-              React.createElement(
-                "p",
-                null,
-                "個人の仕事を受注する"
-              ),
-              React.createElement(
-                "p",
-                null,
-                "専門店登録をして理想のウェディングを挙げたい2人を応援しませんか？私たちの理念に共感していただける専門店を絶賛募集しています。"
-              )
-            ),
-            React.createElement(
-              Link,
-              { to: "/demands" },
-              React.createElement(
-                "button",
-                { className: "top-link" },
-                "依頼する / 理想のイメージを伝える"
-              )
+              { className: "right-column" },
+              React.createElement("img", { src: "images/demand.jpg", alt: "demand" })
             )
           )
         ),
@@ -124,22 +170,46 @@ var Top = React.createClass({
             "td",
             null,
             React.createElement(
-              "h3",
-              { className: "subTitle" },
-              "個人の仕事を受注する"
+              "div",
+              { className: "left-column" },
+              React.createElement(
+                "h3",
+                { className: "subTitle" },
+                "個人の仕事を受注する"
+              ),
+              React.createElement(
+                "div",
+                { className: "description" },
+                React.createElement(
+                  "p",
+                  null,
+                  "専門店登録をして理想のウェディングを挙げたい2人を応援しませんか？私たちの理念に共感していただける専門店を絶賛募集しています。"
+                )
+              ),
+              React.createElement(
+                Link,
+                { to: "/offers" },
+                React.createElement(
+                  "button",
+                  { className: "top-link" },
+                  "案件を送る / カップルを応援する"
+                )
+              )
             ),
             React.createElement(
-              Link,
-              { to: "/offers" },
-              React.createElement(
-                "button",
-                { className: "top-link" },
-                "案件を送る / カップルを応援する"
-              )
+              "div",
+              { className: "right-column" },
+              React.createElement("img", { src: "images/offer.jpg", alt: "offer" })
             )
           )
         )
-      )
+      ),
+      React.createElement(
+        Link,
+        { to: "/" },
+        "トップに戻る"
+      ),
+      React.createElement("footer", null)
     );
   }
 });
@@ -405,56 +475,42 @@ var App = React.createClass({
       "div",
       null,
       React.createElement(
-        "h1",
-        null,
-        "App"
-      ),
-      React.createElement(
-        "ul",
+        "div",
         null,
         React.createElement(
-          "li",
-          null,
+          "div",
+          { className: "header" },
           React.createElement(
-            Link,
-            { to: "/" },
-            "Top"
-          )
-        ),
-        React.createElement(
-          "li",
-          null,
+            "div",
+            { className: "logo" },
+            React.createElement(
+              Link,
+              { to: "/" },
+              "mariee"
+            )
+          ),
           React.createElement(
-            Link,
-            { to: "/demands" },
-            "Demands"
-          )
-        ),
-        React.createElement(
-          "li",
-          null,
+            "div",
+            { className: "navigation" },
+            "marieeとは"
+          ),
           React.createElement(
-            Link,
-            { to: "/demands/new" },
-            "Demand New"
-          )
-        ),
-        React.createElement(
-          "li",
-          null,
+            "div",
+            { className: "navigation" },
+            React.createElement(
+              Link,
+              { to: "demands" },
+              "専門店に依頼する"
+            )
+          ),
           React.createElement(
-            Link,
-            { to: "/offers" },
-            "Offers"
-          )
-        ),
-        React.createElement(
-          "li",
-          null,
-          React.createElement(
-            Link,
-            { to: "/offers/new" },
-            "Offer New"
+            "div",
+            { className: "navigation" },
+            React.createElement(
+              Link,
+              { to: "offers" },
+              "依頼案件を探す"
+            )
           )
         )
       ),
