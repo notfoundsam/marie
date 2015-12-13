@@ -19,8 +19,52 @@ var offer_data = [
 var Top = React.createClass ({
   render: function() {
     return(
-      <div>
-        <h3>Top</h3>
+      <div className="container">
+        <table>
+          <tr>
+            <td>
+              <div className="left-column">
+                <h3 className="subTitle">marieeとは</h3>
+                <div className="description">
+                  <p>これから結婚式を挙げるカップルとアトリエショップやカメラマンなどのさまざまな専門店とをつなげるマッチングサービスです。</p>
+                 <p>《サービスの流れ》</p>
+                 <p>１．カップルが専門店への依頼を登録</p>
+                 <p>２．専門店が登録のあった依頼案件に対して提案</p>
+                 <p>３．マッチングしたら双方間で直接打ち合わせ</p>
+                </div>
+                <div className="right-column">
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h3 className="subTitle">ベンダーに仕事を依頼する</h3>
+              <div className="description">
+                <p>希望するアイテム、希望条件、理想のイメージを登録して、専門店から提案が来るのを待ちましょう！</p>
+                <p>専門家の力を集結させて、「わたしたちらしいウェディングを」実現させましょう！</p>
+                <br/>
+                <p>個人の仕事を受注する</p>
+                <p>専門店登録をして理想のウェディングを挙げたい2人を応援しませんか？私たちの理念に共感していただける専門店を絶賛募集しています。</p>
+              </div>
+              <Link to="/demands">
+                <button className="top-link">
+                  依頼する / 理想のイメージを伝える
+                </button>
+              </Link>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h3 className="subTitle">個人の仕事を受注する</h3>
+              <Link to="/offers">
+                <button className="top-link">
+                  案件を送る / カップルを応援する
+                </button>
+              </Link>
+            </td>
+          </tr>
+        </table>
       </div>
     );
   }

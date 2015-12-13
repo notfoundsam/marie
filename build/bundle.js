@@ -19,11 +19,126 @@ var Top = React.createClass({
   render: function render() {
     return React.createElement(
       "div",
-      null,
+      { className: "container" },
       React.createElement(
-        "h3",
+        "table",
         null,
-        "Top"
+        React.createElement(
+          "tr",
+          null,
+          React.createElement(
+            "td",
+            null,
+            React.createElement(
+              "div",
+              { className: "left-column" },
+              React.createElement(
+                "h3",
+                { className: "subTitle" },
+                "marieeとは"
+              ),
+              React.createElement(
+                "div",
+                { className: "description" },
+                React.createElement(
+                  "p",
+                  null,
+                  "これから結婚式を挙げるカップルとアトリエショップやカメラマンなどのさまざまな専門店とをつなげるマッチングサービスです。"
+                ),
+                React.createElement(
+                  "p",
+                  null,
+                  "《サービスの流れ》"
+                ),
+                React.createElement(
+                  "p",
+                  null,
+                  "１．カップルが専門店への依頼を登録"
+                ),
+                React.createElement(
+                  "p",
+                  null,
+                  "２．専門店が登録のあった依頼案件に対して提案"
+                ),
+                React.createElement(
+                  "p",
+                  null,
+                  "３．マッチングしたら双方間で直接打ち合わせ"
+                )
+              ),
+              React.createElement("div", { className: "right-column" })
+            )
+          )
+        ),
+        React.createElement(
+          "tr",
+          null,
+          React.createElement(
+            "td",
+            null,
+            React.createElement(
+              "h3",
+              { className: "subTitle" },
+              "ベンダーに仕事を依頼する"
+            ),
+            React.createElement(
+              "div",
+              { className: "description" },
+              React.createElement(
+                "p",
+                null,
+                "希望するアイテム、希望条件、理想のイメージを登録して、専門店から提案が来るのを待ちましょう！"
+              ),
+              React.createElement(
+                "p",
+                null,
+                "専門家の力を集結させて、「わたしたちらしいウェディングを」実現させましょう！"
+              ),
+              React.createElement("br", null),
+              React.createElement(
+                "p",
+                null,
+                "個人の仕事を受注する"
+              ),
+              React.createElement(
+                "p",
+                null,
+                "専門店登録をして理想のウェディングを挙げたい2人を応援しませんか？私たちの理念に共感していただける専門店を絶賛募集しています。"
+              )
+            ),
+            React.createElement(
+              Link,
+              { to: "/demands" },
+              React.createElement(
+                "button",
+                { className: "top-link" },
+                "依頼する / 理想のイメージを伝える"
+              )
+            )
+          )
+        ),
+        React.createElement(
+          "tr",
+          null,
+          React.createElement(
+            "td",
+            null,
+            React.createElement(
+              "h3",
+              { className: "subTitle" },
+              "個人の仕事を受注する"
+            ),
+            React.createElement(
+              Link,
+              { to: "/offers" },
+              React.createElement(
+                "button",
+                { className: "top-link" },
+                "案件を送る / カップルを応援する"
+              )
+            )
+          )
+        )
       )
     );
   }
