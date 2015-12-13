@@ -5,9 +5,7 @@
   "main": "(index.js)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "gulp": "gulp",
-    "minify": "gulp minify"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +23,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "gulp-install": "^0.6.0",
-    "history": "^1.16.0"
+    "history": "^1.13.1",
+    "react-router": "^1.0.2"
   }
 }
