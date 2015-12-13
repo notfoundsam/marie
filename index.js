@@ -4,7 +4,10 @@ import { render } from 'react-dom'
 const Top = React.createClass ({
   render() {
     return(
-      <h3>Top</h3>
+    <div>
+      <h3>sssss</h3>
+      <div className="header">mariee</div> 
+    </div>
     );
   }
 })
@@ -38,19 +41,6 @@ const Show = React.createClass ({
     return(
       <p>showpage</p>
     )
-  }
-})
-
-const Demands = React.createClass ({
-  render() {
-    let DemandsChild
-    switch (this.state.route) {
-      case '/demands/new':          DemandsChild = New; break;
-      case '/demands/show/[1-9]\d': DemandsChild = Show; break;
-      default:                      DemandsChild = Index;
-    }
-    return(
-    );
   }
 })
 
